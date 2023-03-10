@@ -5,13 +5,14 @@
             <option value="1">Paintings</option>
             <option value="2">Photography</option>
           </select>
-          <div class="container" v-for="product in products" :key="product.prodId">
+          <div class="container" v-for="product in products" :key="product.ProdId">
              <div class="card" style="width: 18rem;" >
-       <img :src="product.prodImg" alt="">
-        <h5 class="card-title" >{{product.prodName}}</h5>
-        <h6 class="card-title" >{{product.Artist}}</h6>
-         <p class="card-text">{{product.prodDiscription}}</p>
-         <h6 class="card-title" >{{product.ProdPrice}}</h6>
+                <img :src="product.ProdImg" alt="">
+                    <h5 class="card-title" >{{product.ProdName}}</h5>
+                    <h6 class="card-title" >{{product.Artist}}</h6>
+                    <p class="card-text">{{product.ProdDiscription}}</p>
+                    <h6 class="card-title" >{{product.ProdPrice}}</h6>
+                    <p class="card-text">{{product.ProdDate}}</p>
 
            <a href="#" class="btn btn-warning">MORE</a>
      </div> 
@@ -31,7 +32,10 @@ import {computed} from '@vue/runtime-core';
   return {
     products
   }
-}   
+},
+// mounted() {
+//     this.$store.dispatch('getProducts')
+// }
     }
 </script>
 

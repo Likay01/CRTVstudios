@@ -1,6 +1,6 @@
 import { createStore } from 'vuex'
 import axios from 'axios';
-const url = "https://crtvstudios.onrender.com";
+const url = "https://crtvstudios.onrender.com/";
 
 export default createStore({
   state: {
@@ -48,11 +48,12 @@ export default createStore({
         context.commit('setMessage', err)
       }
     },
-    async getProducts(context) {
-      const res = await axios.get(`${url}products`);
+    async getProducts(context, info) {
+      const res = await axios.get(`${url}products`, info);
       const {result, err} = await res.data;
       if(result) {
         context.commit('setProducts', result);
+        console.log(result);
       }else {
         context.commit(err);
       }
