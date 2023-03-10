@@ -1,0 +1,86 @@
+<template>
+    <div class="container">
+<div class="col">
+    <h2 class="word-effect">Naledi Modupi</h2>
+    <h2 class="word">Naledi Modupi</h2>
+<h3 class="col-8">Naledi Tshegofatso Modupi is a multi-dimensional visual artist who has developed a powerful and distinctive style of portraiture. She is known for her versatility and skill in exploring both traditional and digital art form. </h3>
+<button type="button" class="btn btn-outline-dark"><router-link to="/product" class="nav-link active" aria-current="page">See art by Naledi ?</router-link></button>
+</div>
+<div class="Artist col-5 m-auto">
+<img src="https://i.postimg.cc/6pNSNDGr/My-project-1-29.png" alt="">
+</div>
+    </div>
+</template>
+
+<script>
+    export default {
+        
+    }
+</script>
+
+<style scoped>
+.container{
+    display: flex;
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+    height: 100vh;
+    background-image: url(https://i.postimg.cc/R00YRQBn/My-project-1-19.png);
+
+}
+.word-effect{
+    font-size: 5rem;
+    color: rgba(185, 185, 185, 0.156);
+    text-align: start;
+    margin: 0;
+    opacity: 0;
+    animation: fade 1s;
+    animation-delay: 0.9s;
+    animation-fill-mode: forwards;   
+}
+.Artist{
+    opacity: 0;
+    animation: fade 1s;
+    animation-delay: 4s;
+    animation-fill-mode: forwards;
+}
+.word{
+    font-size: 5rem;
+    position: relative;
+    bottom: 110px;
+    text-align: start;
+    opacity: 0;
+    animation: fade 1s;
+    animation-delay: 0.9s;
+    animation-fill-mode: forwards; 
+}
+h3{
+    text-align: start;
+    opacity: 0;
+    animation: fade 1s;
+    animation-delay: 2s;
+    animation-fill-mode: forwards;   
+}
+
+.btn{
+margin-right: 100%;
+width: 12rem;
+margin-top: 3rem;
+font-size: 25px;
+border: solid 5px;
+font-weight: bold;
+opacity: 0;
+animation: fade 1s;
+animation-delay: 6s;
+animation-fill-mode: forwards;   
+}
+@keyframes fade {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+  }
+  
+</style>
