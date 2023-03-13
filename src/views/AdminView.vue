@@ -26,8 +26,8 @@
             <td>{{product.ProdPrice}}</td>
             <td>{{product.ProdDiscription}}</td>
             <td>{{product.ProdDate}}</td>
-            <td>del</td>
-            <td>mod</td>
+            <td><button type="button" class="btn btn-danger"><i class="fa-regular fa-trash-can"></i></button></td>
+            <td><button type="button" class="btn btn-success"><i class="fa-regular fa-pen-to-square"></i></button></td>
           </tr>
         </tbody>
       </table>
@@ -54,17 +54,17 @@
           <tbody class="userTable">
             <tr v-for="user in users" :key="user.UserId">
              <td>{{user.UserId}}</td>
-             <td> <img class="w-50" :src="user.profilePic" alt=""></td>
+             <td><img class="w-25 p-0" :src="user.profilePic" alt=""></td>
              <td>{{user.firstname}}</td>
              <td>{{user.Surname}}</td>
              <td>{{user.Username}}</td>
              <td>{{user.email}}</td>
              <td>{{user.psswrd}}</td>
              <td>{{user.gender}}</td>
+             <td>{{user.UserRole}}</td>
              <td>{{user.JoinDate}}</td>
-             <td>{{user.userRole}}</td>
-             <td><button>bin</button></td>
-             <td>mod</td>
+             <td><button type="button" class="btn btn-danger"><i class="fa-regular fa-trash-can"></i></button></td>
+             <td><button type="button" class="btn btn-warning "><i class="fa-solid fa-user-pen"></i></button></td>
             </tr>
           </tbody>
         </table>
@@ -96,7 +96,6 @@
     width: 100vw;
     background-image: url(https://i.postimg.cc/R00YRQBn/My-project-1-19.png);
     background-size: cover;
-  
     }
     .all{
       padding-top: 2rem;
@@ -114,5 +113,7 @@
   
     td {
       word-break: break-all;
+      font-size: 8px;
+      font-weight: bold;
     }
     </style>

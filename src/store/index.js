@@ -7,7 +7,7 @@ export default createStore({
     users : null,
     products : null,
     message : null,
-    showSpinner : true,
+    showSpinner : false,
   },
   mutations: {
     setUsers(state, values) {
@@ -48,14 +48,15 @@ export default createStore({
         context.commit('setMessage', err)
       }
     },
-    async getProducts(context, info) {
-      const res = await axios.get(`${url}products`, info);
-      const {result, err} = await res.data;
-      if(result) {
-        context.commit('setProducts', result);
-        console.log(result);
+    async getProducts(context) {
+      const res = await axios.get(`${url}products`);
+      const {results, err} = await res.data;
+      console.log(results);
+      if(results) {
+        context.commit('setProducts', results);
+        console.log(results);
       }else {
-        context.commit(err);
+        context.commit('setMessage', err)
       }
     },
     async getUsers(context, info) {
@@ -64,7 +65,7 @@ export default createStore({
       if(result) {
         context.commit('setUsers', result);
       }else {
-        context.commit(err);
+        context.commit('setMessage', err)
       }
     },
     async updateUser(context, info) {

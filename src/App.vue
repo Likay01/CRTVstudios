@@ -3,8 +3,10 @@
   <navbar></navbar>
   </header>
   <body>
-
-      <router-view/>
+    <SpinnerC v-if="isLoading" />
+    <div v-else>
+    <router-view/>
+  </div>
   </body>
   <footer>
 <Footer></Footer>
@@ -14,10 +16,22 @@
 // @ is an alias to /src
 import navbar from '@/components/NavbarCS.vue'
 import Footer from '@/components/footerCS.vue'
+import SpinnerC from '@/components/Spinner.vue'
 export default {
   components: {
     navbar,
-    Footer
+    SpinnerC,
+    Footer 
+  },
+  data(){
+    return{
+      isLoading: true,
+    }
+  },
+  created(){
+    setTimeout(()=>{
+      this.isLoading = false;
+    }, 2000)
   }
 }
 </script>

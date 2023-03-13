@@ -26,12 +26,47 @@
                 </router-link>
             <form class="d-flex" role="search">
              <router-link to="/cart" class="navbar-brand m-auto" ><i class="fa-solid fa-cart-flatbed"></i></router-link>       
-              <button type="button" class="btn " data-bs-toggle="modal" data-bs-target="#exampleModal">Login</button>
-              <button type="button" class="signup" data-bs-toggle="modal" data-bs-target="#exampleModal">Sign Up</button>
+              <button type="button" class="btn " data-bs-toggle="modal" data-bs-target="#LoginModal">Login</button>
+              <router-link to="/signup" class="dropdown-item" ><button type="button" class="btn signup">Sign Up</button></router-link>
             </form>
           </div>
         </div>
       </nav>
+
+      <!--Login Modal -->
+<div class="modal fade" id="LoginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content bg-black">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5 text-white" id="exampleModalLabel">Login</h1>
+      </div>
+      <div class="modal-body">
+        <img src="https://i.postimg.cc/CM7ZvndB/My-project-1-37.png" alt="" class="m-3 w-50" >
+        <form>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label text-white">Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+            <div id="emailHelp" class="form-text text-white">We'll never share your email with anyone else.</div>
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label text-white">Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" required>
+          </div>
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
+            <label class="form-check-label  text-white" for="exampleCheck1">I am not a robot</label>
+          </div>
+          <button type="submit" class="btn btn-warning text-black">Submit</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary text-white" data-bs-dismiss="modal">Close</button>
+        <router-link to="/signup" class="dropdown-item" ><button type="button" class="btn btn-light" data-bs-dismiss="modal">Sign Up ?</button></router-link>
+      </div>
+    </div>
+  </div>
+</div>
+
 </template>
 
 <script>
@@ -52,6 +87,7 @@ img{
 border-color: black;
 background-color: black;
 color: white;
+border-radius: 0;
 }
 i{
   margin-right: 1rem;
