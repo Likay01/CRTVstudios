@@ -64,7 +64,10 @@ body{
     width: 80vw;
     margin-top:70px ;
     box-shadow: 0px 20px 20px 10px rgba(0, 0, 0, 0.275);
-
+    opacity: 0;
+    animation: fade 1s;
+    animation-delay: 0.9s;
+    animation-fill-mode: forwards; 
 }
 
 .right{
@@ -74,9 +77,21 @@ body{
     background-size: cover;
     margin: 4rem;
     box-shadow: 0px 20px 20px 10px rgba(0, 0, 0, 0.275);
+    opacity: 0;
+    animation: fade 1s;
+    animation-delay: 1.5s;
+    animation-fill-mode: forwards; 
 }
 button{
 position: relative;
 top: 85%;
 }
+@keyframes fade {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+  }
 </style>

@@ -23,13 +23,24 @@
             <td>{{product.ProdName}}</td>
             <td>{{product.Artist}}</td>        
             <td>{{product.ProdImg}}</td>
-            <td>{{product.ProdPrice}}</td>
+            <td>R{{product.ProdPrice}}</td>
             <td>{{product.ProdDiscription}}</td>
             <td>{{product.ProdDate}}</td>
             <td><button type="button" class="btn btn-danger"><i class="fa-regular fa-trash-can"></i></button></td>
             <td><button type="button" class="btn btn-success"><i class="fa-regular fa-pen-to-square"></i></button></td>
           </tr>
         </tbody>
+        <tfoot>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td><button type="button" class="btn btn-outline-dark bg-warning text-dark">ADD</button></td>
+        </tfoot>
       </table>
     </div>
       <div class="Use" id="users">
@@ -64,7 +75,7 @@
              <td>{{user.UserRole}}</td>
              <td>{{user.JoinDate}}</td>
              <td><button type="button" class="btn btn-danger"><i class="fa-regular fa-trash-can"></i></button></td>
-             <td><button type="button" class="btn btn-warning "><i class="fa-solid fa-user-pen"></i></button></td>
+             <td><button type="button" class="btn btn-success "><i class="fa-solid fa-user-pen"></i></button></td>
             </tr>
           </tbody>
         </table>

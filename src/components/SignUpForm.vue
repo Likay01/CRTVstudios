@@ -30,12 +30,20 @@
                 <input type="password" class="form-control" id="floatingPassword" placeholder="eg.********" autocomplete="off" v-model="info.psswrd" required>
                 <label for="floatingInput">Password</label>
               </div>
-              <div class="form-floating mb-3">
+              <!-- <div class="form-floating mb-3">
                 <input type="gender" class="form-control" id="floatingInput" placeholder="example@CRTVstudios.com" v-model="info.gender" required>
                 <label for="floatingInput">Gender</label>
-              </div>       
+              </div>  -->
               <div class="form-floating mb-3">
-                <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                <select class="form-select" id="floatingSelect" aria-label="Floating label select example" v-model="info.gender" required>
+                  <option value="female">Female</option>
+                  <option value="male">Male</option>
+                  <option value="others">Others</option>
+                </select>
+                <label for="floatingSelect">Gender</label>  
+                </div>    
+              <div class="form-floating mb-3">
+                <select class="form-select" id="floatingSelect" aria-label="Floating label select example" v-model="info.UserRole">
                   <option value="1" disabled>Admin</option>
                   <option value="2">Consumer</option>
                 </select>
@@ -73,7 +81,7 @@ import { useStore } from 'vuex';
       const st = useStore();
       const signUp = ()=> {
         st.dispatch("signup", info);
-        st.dispatch("users", info);
+        st.dispatch("getUsers", info);
       }
       const userMsg = 
       computed( ()=>st.state.message )

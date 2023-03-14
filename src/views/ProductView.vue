@@ -1,19 +1,25 @@
 <template>
     <body>
-        <select class="form-select w-25 m-auto mt-3" aria-label="Default select example">
+      <div class="sub d-flex">
+         <select class="form-select w-25 mt-3" aria-label="Default select example">
             <option selected >filter</option>
             <option value="1">Paintings</option>
             <option value="2">Photography</option>
           </select>
+            <form class="d-flex w-25  mt-3" role="search">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-warning" type="submit">Search</button>
+            </form>
+        
+      </div>
+       
             <div class="container">
              <div class="row">
               <div class="card" v-for="product in products" :key="product.ProdId" style="width: 18rem;" >
                 <img :src="product.ProdImg" alt="">
                     <h5 class="card-title" >{{product.ProdName}}</h5>
                     <h6 class="card-title" >{{product.Artist}}</h6>
-                    <p class="card-text">{{product.ProdDiscription}}</p>
                     <h6 class="card-title" >R{{product.ProdPrice}}</h6>
-                    <p class="card-text">{{product.ProdDate}}</p>
 
            <a href="#" class="btn btn-warning">MORE</a>
              </div>
@@ -56,6 +62,13 @@ select{
   animation: fade 1s;
   animation-delay: 1s;
   animation-fill-mode: forwards; 
+  margin-left: 3rem;
+}
+form{
+  margin-left: 43rem ;
+}
+img{
+  height: 394px;
 }
 .card{
     margin-top: 3rem;

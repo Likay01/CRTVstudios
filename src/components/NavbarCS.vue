@@ -42,15 +42,15 @@
       </div>
       <div class="modal-body">
         <img src="https://i.postimg.cc/CM7ZvndB/My-project-1-37.png" alt="" class="m-3 w-50" >
-        <form>
+        <form @submit.prevent="login">
           <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label text-white">Email address</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" v-model="email" required>
             <div id="emailHelp" class="form-text text-white">We'll never share your email with anyone else.</div>
           </div>
           <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label text-white">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" required>
+            <input type="password" class="form-control" id="exampleInputPassword1" v-model="psswrd" required>
           </div>
           <div class="mb-3 form-check">
             <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
@@ -66,12 +66,31 @@
     </div>
   </div>
 </div>
+<div v-if="user">
+  Welcome {{ user.firstname }}
 
+</div>
 </template>
 
 <script>
     export default {
-        
+     data(){
+    return {
+      email: "",
+      psswrd: "",
+      user: null
+    }
+  },
+  methods: {
+    login(){
+      fetch(`http://localhost:8080/users?email=${this.email}&password=${this.psswrd}`)
+        .then(res => res.json())
+        .then(data => {
+          if(data.length) return this.user = data[0]
+          alert("No user found, please Sign up")
+        })
+    }
+  }
     }
 </script>
 

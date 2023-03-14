@@ -3,7 +3,7 @@
   <navbar></navbar>
   </header>
   <body>
-    <SpinnerC v-if="isLoading" />
+    <SpinnerC v-if="isLoading" />  
     <div v-else>
     <router-view/>
   </div>

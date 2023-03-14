@@ -17,7 +17,7 @@
         <input type="date" class="form-control" id="exampleFormControlInput1" placeholder="MM/YY">
       </div>
       </div>  
-      <button type="submit" class="btn  btn-outline-warning text-warning mb-3">Confirm Payment</button>
+      <button type="submit" class="btn  btn-outline-warning text-warning  mb-3">Confirm Payment</button>
     </form>
 </div>
 <div class="col"></div>
@@ -51,6 +51,9 @@ body{
 }
 .split{
     display: flex;
+}
+button:hover{
+color: white;
 }
 .info{
     margin-top: 8rem;

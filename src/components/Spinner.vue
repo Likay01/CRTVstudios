@@ -1,6 +1,7 @@
 <template>
-    <div v-if="showSpinner" class="loader"></div>
-    <div v-else></div>
+  <body>
+    <img src="https://i.postimg.cc/mkr16hdD/CRTVstudios.png" alt="">
+  </body>
 </template>
 
 <script>
@@ -11,46 +12,24 @@
 </script>
 
 <style scoped>
-.loader {
-    width: 84px;
-    height: 84px;
-    position: relative;
-    overflow: hidden;
+body{
+  height: 100vh;
+  width: 100vh;
+  margin: auto;
+  padding-top:15% ;
+}
+
+img{
+  width: 15rem;
+  opacity: 0.8;
+  animation: pulse_414 0.4s alternate infinite ease-in-out;
+  animation-delay: 0.4s;
+}
+
+@keyframes pulse_414 {
+  to {
+    transform: scale(0.8);
+    opacity: 0.5;
   }
-  
-  .loader:before , .loader:after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    bottom: 0;
-    width: 64px;
-    height: 64px;
-    border-radius: 50%;
-    background: yellow;
-    transform: translate(-50% , 100%)  scale(0);
-    animation: push_4051 2s infinite ease-in;
-  }
-  
-  .loader:after {
-    animation-delay: 1s;
-  }
-  
-  @keyframes push_4051 {
-    0% {
-      transform: translate(-50% , 100%)  scale(1);
-    }
-  
-    15% , 25% {
-      transform: translate(-50% , 50%)  scale(1);
-    }
-  
-    50% , 75% {
-      transform: translate(-50%, -30%) scale(0.5);
-    }
-  
-    80%,  100% {
-      transform: translate(-50%, -50%) scale(0);
-    }
-  }
-    
+}
 </style>

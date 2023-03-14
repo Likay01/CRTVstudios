@@ -122,8 +122,7 @@ object-fit: contain;
   background-size: cover;
 }
 .container-1:hover,.container-2:hover,.container-3:hover,.container-4:hover{
-
-animation: zoom 0.6s ease-in-out forwards;
+animation: zoom 0.6s  forwards ease-in-out;
 
 }
 .Names{
