@@ -17,6 +17,7 @@ body{
   width: 100vh;
   margin: auto;
   padding-top:15% ;
+  background-color: white;
 }
 
 img{

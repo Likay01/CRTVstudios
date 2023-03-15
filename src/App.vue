@@ -3,10 +3,8 @@
   <navbar></navbar>
   </header>
   <body>
-    <SpinnerC v-if="isLoading" />  
-    <div v-else>
     <router-view/>
-  </div>
+
   </body>
   <footer>
 <Footer></Footer>
@@ -16,23 +14,11 @@
 // @ is an alias to /src
 import navbar from '@/components/NavbarCS.vue'
 import Footer from '@/components/footerCS.vue'
-import SpinnerC from '@/components/Spinner.vue'
 export default {
   components: {
     navbar,
-    SpinnerC,
     Footer 
   },
-  data(){
-    return{
-      isLoading: true,
-    }
-  },
-  created(){
-    setTimeout(()=>{
-      this.isLoading = false;
-    }, 2000)
-  }
 }
 </script>
 
@@ -59,10 +45,10 @@ footer{
 }
 nav a {
   font-weight: bold;
-  color: #2c3e50;
+  color: #060d15;
 }
 
 nav a.router-link-exact-active {
-  color: #42b983;
+  color: #fbc000;
 }
 </style>

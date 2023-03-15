@@ -45,12 +45,12 @@
         <form @submit.prevent="login">
           <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label text-white">Email address</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" v-model="email" required>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" v-model="info.email" required>
             <div id="emailHelp" class="form-text text-white">We'll never share your email with anyone else.</div>
           </div>
           <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label text-white">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" v-model="psswrd" required>
+            <input type="password" class="form-control" id="exampleInputPassword1" v-model="info.psswrd" required>
           </div>
           <div class="mb-3 form-check">
             <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
@@ -60,7 +60,7 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary text-white" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary text-white" data-bs-dismiss="modal" v-if="login">Close</button>
         <router-link to="/signup" class="dropdown-item" ><button type="button" class="btn btn-light" data-bs-dismiss="modal">Sign Up ?</button></router-link>
       </div>
     </div>
@@ -76,19 +76,21 @@
     export default {
      data(){
     return {
-      email: "",
-      psswrd: "",
-      user: null
+      info: {
+        email: "",
+      psswrd: "",  
+      }
+    }
+  },
+  computed: {
+    logged() {
+      return this.$store.state.login
     }
   },
   methods: {
     login(){
-      fetch(`http://localhost:8080/users?email=${this.email}&password=${this.psswrd}`)
-        .then(res => res.json())
-        .then(data => {
-          if(data.length) return this.user = data[0]
-          alert("No user found, please Sign up")
-        })
+this.$store.dispatch('login', this.info)
+
     }
   }
     }

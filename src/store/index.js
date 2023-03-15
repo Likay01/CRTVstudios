@@ -9,7 +9,7 @@ export default createStore({
     products : null,
     product : null,
     message : null,
-    showSpinner : false,
+    login : null
   },
   mutations: {
     setUsers(state, values) {
@@ -30,9 +30,6 @@ export default createStore({
     setMessage(state, value) {
       state.message = value
     },
-    setSpinner(state, value) {
-      state.showSpinner = value
-    }
   },
   actions: {
     async login(context, info) {
@@ -40,6 +37,7 @@ export default createStore({
       const {result, err} = await res.data;
       if(result) {
         context.commit('login', result);
+        console.log(result)
       }else {
         context.commit('setUsers', err);
       }

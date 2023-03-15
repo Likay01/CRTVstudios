@@ -1,7 +1,8 @@
 <template>
-    <body>
-     <div class="cart">
-    
+      <body>
+<SpinnerC v-if="isLoading" />  
+<div v-else>
+     <div class="cart">  
 <div class="col">
     <table class="t2 table">
         <thead>
@@ -37,21 +38,34 @@
     <router-link to="/checkout" class="navbar-brand m-auto" ><button class="btn btn-dark text-white mb-3">Proceed to checkout</button>
 </router-link>       
 </div>
-</div>   
+</div>
+</div>  
     </body>
-
-
 </template>
 
 <script>
+import SpinnerC from '@/components/Spinner.vue'
+
     export default {
-        
+  components: {
+    SpinnerC,
+  },
+  data(){
+    return{
+      isLoading: true,
+    }
+  },
+  created(){
+    setTimeout(()=>{
+      this.isLoading = false;
+    }, 2000)
+  }  
     }
 </script>
 
 <style scoped>
 body{
-    background-color: rgba(201, 201, 201, 0.263);
+   
     height: 100vh;
 }
 .cart{

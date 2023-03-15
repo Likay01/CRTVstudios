@@ -3,7 +3,6 @@
         <h1>
             SIGN UP
         </h1>
-    
           <form  @submit.prevent="signUp">
             <div class="form-floating mb-3">
                 <input type="name" class="form-control" id="floatingInput" placeholder="Name" v-model="info.firstname" required>
@@ -57,7 +56,8 @@
               <div class="form-control-wrapper">  
                 <label class="form-control bg-gradient" v-show="userMsg">{{userMsg}}</label>
               </div>
-              <button type="submit" class="btn btn-dark btn-outline-dark text-white mb-3">Submit</button>
+              <button type="submit" class="btn btn-dark btn-outline-dark text-white mb-3 " id="liveAlertBtn">Submit</button>
+              <div id="liveAlertPlaceholder"></div>
         </form>
     </div>
 </template>

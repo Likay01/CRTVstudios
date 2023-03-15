@@ -1,5 +1,7 @@
 <template>
-    <body>
+    <SpinnerC v-if="isLoading" />  
+    <div v-else>
+    <div class="body">
         <div class="checkout">
 <div class="col info">
     <form action="">
@@ -23,17 +25,33 @@
 <div class="col"></div>
 <img src="https://i.postimg.cc/JhW5TNgV/My-project-1-41.png" alt="" class="m-auto" width="500px">
         </div>
-    </body>
+    </div>
+
+</div>
 </template>
 
 <script>
+import SpinnerC from '@/components/Spinner.vue'
+
     export default {
-        
+  components: {
+    SpinnerC,
+  },
+  data(){
+    return{
+      isLoading: true,
+    }
+  },
+  created(){
+    setTimeout(()=>{
+      this.isLoading = false;
+    }, 2000)
+  }    
     }
 </script>
 
 <style scoped>
-body{
+.body{
     background-image: url(https://i.postimg.cc/DZ4CHvgR/My-project-1-42.png);
     background-size: cover;
     background-position: center; 

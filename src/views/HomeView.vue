@@ -1,6 +1,7 @@
 <template>
-  
-  <div class="fstBanner">
+  <SpinnerC v-if="isLoading" />  
+<div v-else>
+    <div class="fstBanner">
     <img class="Crtv" src="https://i.postimg.cc/mkr16hdD/CRTVstudios.png" alt="home">
 <h4 class="slogan">Art that speaks to your soul - find your masterpiece with us!</h4>
   </div>
@@ -21,12 +22,27 @@
         <router-link to="/ines" class="container-4 nav-link active" aria-current="page"><div class=""><h2 class="Names text-black">Inès Longevial</h2></div></router-link>
   </div>
   </div>
+</div>
 
 </template>
 
 <script>
+import SpinnerC from '@/components/Spinner.vue'
+
   export default {
-    
+    components: {
+    SpinnerC,
+  },
+  data(){
+    return{
+      isLoading: true,
+    }
+  },
+  created(){
+    setTimeout(()=>{
+      this.isLoading = false;
+    }, 2000)
+  } 
   }
 </script>
 
@@ -39,6 +55,10 @@
   background-size: cover;
   height: 93vh;
   color: rgb(0, 0, 0);
+  opacity: 0;
+  animation: fade 1s;
+  animation-delay: 1s;
+  animation-fill-mode: forwards;
 }
 .slogan{
   opacity: 0;

@@ -1,5 +1,7 @@
 <template>
-    <body>
+  <SpinnerC v-if="isLoading" />  
+<div v-else>
+    <div class="body">
       <div class="sub d-flex">
          <select class="form-select w-25 mt-3" aria-label="Default select example">
             <option selected >filter</option>
@@ -26,12 +28,15 @@
 
             </div>
      </div> 
-    </body>
+    </div>
+</div>
 </template>
 
 <script>
 import {useStore} from 'vuex';
 import {computed} from '@vue/runtime-core';
+import SpinnerC from '@/components/Spinner.vue'
+
     export default {
         setup() {
   const store = useStore();
@@ -42,19 +47,31 @@ import {computed} from '@vue/runtime-core';
     products
   }
 },
-
+components: {
+    SpinnerC,
+  },
+  data(){
+    return{
+      isLoading: true,
+    }
+  },
+  created(){
+    setTimeout(()=>{
+      this.isLoading = false;
+    }, 2000)
+  } 
     }
 </script>
 
 <style scoped>
-body{
+.body{
   background-image: url(https://i.postimg.cc/R00YRQBn/My-project-1-19.png);
   background-size: cover;
   background-position: center;
   overflow: hidden;
   opacity: 0;
   animation: fade 1s;
-  animation-delay: 0.9s;
+  animation-delay: 0.5s;
   animation-fill-mode: forwards; 
 }
 select{
@@ -76,7 +93,7 @@ img{
 .container{
   opacity: 0;
   animation: fade 1s;
-  animation-delay: 2s;
+  animation-delay: 1s;
   animation-fill-mode: forwards; 
 }
 .row{

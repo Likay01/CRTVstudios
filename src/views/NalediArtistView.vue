@@ -1,5 +1,7 @@
 <template>
-    <div class="container">
+    <SpinnerC v-if="isLoading" />  
+<div v-else>
+        <div class="container">
 <div class="col">
     <h2 class="word-effect">Naledi Modupi</h2>
     <h2 class="word">Naledi Modupi</h2>
@@ -10,11 +12,26 @@
 <img src="https://i.postimg.cc/6pNSNDGr/My-project-1-29.png" alt="">
 </div>
     </div>
+</div>
 </template>
 
 <script>
+import SpinnerC from '@/components/Spinner.vue'
+
     export default {
-        
+  components: {
+    SpinnerC,
+  },
+  data(){
+    return{
+      isLoading: true,
+    }
+  },
+  created(){
+    setTimeout(()=>{
+      this.isLoading = false;
+    }, 2000)
+  }    
     }
 </script>
 
