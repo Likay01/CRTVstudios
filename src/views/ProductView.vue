@@ -22,8 +22,7 @@
                     <h5 class="card-title" >{{product.ProdName}}</h5>
                     <h6 class="card-title" >{{product.Artist}}</h6>
                     <h6 class="card-title" >R{{product.ProdPrice}}</h6>
-
-           <a href="#" class="btn btn-warning">MORE</a>
+          <router-link :to="{name:'single', params:{id:product.ProdId}}" class="btn btn-warning">More</router-link>       
              </div>
 
             </div>

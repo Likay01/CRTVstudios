@@ -76,15 +76,15 @@
            <td>{{user.gender}}</td>
            <td>{{user.UserRole}}</td>
            <td>{{user.JoinDate}}</td>
-           <td><button type="button" class="btn btn-danger"><i class="fa-regular fa-trash-can"></i></button></td>
-           <td><button type="button" class="btn btn-success "><i class="fa-solid fa-user-pen"></i></button></td>
+           <td><button type="button" class="btn btn-danger" @click="user.UsedId"><i class="fa-regular fa-trash-can"></i></button></td>
+           <td><button type="button" class="btn btn-success"><i class="fa-solid fa-user-pen"></i></button></td>
           </tr>
         </tbody>
       </table>
-  
     </div>
   </div>
   </div>
+  
 </div>
     </template>
     <script>
@@ -114,8 +114,10 @@
   created(){
     setTimeout(()=>{
       this.isLoading = false;
-    }, 2000)
-  }
+    }, 2000);
+  },
+  methods: {
+  },
 }
     </script>
     <style scoped>

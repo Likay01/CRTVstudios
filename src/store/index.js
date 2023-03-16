@@ -21,6 +21,9 @@ export default createStore({
     setProducts(state, values) {
       state.products = values
     },
+    setProduct(state, value) {
+      state.product = value
+    },
     login(state, values) {
       state.users = values
     },
@@ -30,6 +33,9 @@ export default createStore({
     setMessage(state, value) {
       state.message = value
     },
+    deleteUser(state, value) {
+      state.user = value
+    }
   },
   actions: {
     async login(context, info) {
@@ -63,6 +69,15 @@ export default createStore({
         context.commit('setMessage', err)
       }
     },
+    async getProduct(context, id) {
+      const res = await axios.get(`${url}product/${id}`);
+      const {results, err} = await res.data;
+      if(results) {
+        context.commit('setProduct',await res.data)
+      }else {
+        context.commit('setMessage', err)
+      }
+    },
     async getUsers(context, info) {
       const res = await axios.get(`${url}users`, info);
       const {result, err} = await res.data;
@@ -81,15 +96,15 @@ export default createStore({
          context.commit('setMessage', err)
       }
     },
-    async deleteUser(context, info) {
-      const res =  await axios.delete(`${url}user/:id`, info);
-      const {result, err} = await res.data;
-      if(result) {
-        context.commit('setUser', result);
-      }else {
-        context.commit('setMessage', err)
+    async deleteUser(id) {
+      try{
+        await axios.delete(`${url}/users/${id}`);
+        this.getUsers();
+      }catch (err) {
+        console.log(err);
       }
-    }
+     }
+
   },
   modules: {
   }

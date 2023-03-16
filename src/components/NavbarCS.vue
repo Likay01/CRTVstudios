@@ -7,6 +7,9 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ">
               <li class="nav-item">
+                <router-link to="/profile" class="nav-link active" aria-current="page"><img src="https://i.postimg.cc/mkr16hdD/CRTVstudios.png" alt="home" class="Pro"></router-link>
+              </li>
+              <li class="nav-item">
                 <router-link to="/about" class="nav-link active" aria-current="page">About Us</router-link>
               </li>
               <li class="nav-item dropdown">
@@ -112,5 +115,11 @@ border-radius: 0;
 }
 i{
   margin-right: 1rem;
+}
+.Pro{
+  width: 25px;
+  height: 25px;
+  border: solid 1px;
+  border-radius: 50%;
 }
 </style>

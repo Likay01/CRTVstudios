@@ -23,14 +23,14 @@ const routes = [
     component: () => import('../views/ProductView.vue')
   },
   {
-path: '/single',
+path: '/single/:id',
 name: 'single',
 component: ()=> import('../views/SingleProdView.vue')
   },
   {
     path: '/profile',
     name: 'profile',
-    component: ()=> import('../views/SingleProdView.vue')
+    component: ()=> import('../views/ProfileView.vue')
       },
   {
     path: '/contact',
