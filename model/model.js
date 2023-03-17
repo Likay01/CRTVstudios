@@ -34,7 +34,8 @@ class Users {
                         res.cookie('LegitUser',
                         jwToken, {
                             maxAge: 3600000,
-                            httpOnly: true
+                            httpOnly: true,
+                            path:'/'
                         })
                         if(cResult) {
                             res.status(200).json({
@@ -89,6 +90,7 @@ class Users {
         `insert into Users set ?;`;
         DB.query(sqlQry, [detail], (err)=> {
             if(err) {
+                console.log(err)
                 res.status(404).json({err});
             }else {
                 const jwToken = createToken(user);
@@ -129,7 +131,9 @@ class Users {
 class Products {
     getProducts(req, res) {
         const sqlQry =
-        `select ProdId, ProdImg, ProdName, Artist, ProdDiscription, ProdDate, ProdPrice from Products;`;
+        `select ProdId, ProdImg, ProdName, Artist, ProdDiscription, ProdDate, ProdPrice
+         from Products;
+         `;
         DB.query(sqlQry, (err, results)=> {
             if(err) throw err;
             res.status(200).json({results: results})

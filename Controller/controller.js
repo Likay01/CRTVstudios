@@ -7,6 +7,8 @@ const bodyParser = require('body-parser');
 const route = express.Router();
 
 const {Users, Products, Cart} = require('../model/model');
+const { verify } = require('crypto');
+const { verifyAToken } = require('../middleware/AuthenticatedUsers');
 
 const user = new Users();
 
@@ -47,7 +49,7 @@ route.get('/products', (req, res)=>{
     product.getProducts(req, res);
 });
 // get a Product
-route.get('/product/:id', (req, res)=>{
+route.get('/product/:id', verifyAToken, (req, res)=>{
     product.getProduct(req, res);
 });
 // Add a Product
@@ -55,7 +57,7 @@ route.post('/product', bodyParser.json(),(req, res)=>{
     product.addProduct(req, res);
 });
 // Update a Product
-route.put('/Product/:id', bodyParser.json(), (req, res)=>{
+route.put('/product/:id', bodyParser.json(), (req, res)=>{
     product.updateProduct(req, res);
 });
 // Delete a Product
