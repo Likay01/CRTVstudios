@@ -49,7 +49,7 @@ route.get('/products', (req, res)=>{
     product.getProducts(req, res);
 });
 // get a Product
-route.get('/product/:id', verifyAToken, (req, res)=>{
+route.get('/product/:id', bodyParser.json(), (req, res)=>{
     product.getProduct(req, res);
 });
 // Add a Product
