@@ -36,8 +36,6 @@ class Users {
                             maxAge: 3600000,
                             httpOnly: true,
                             path:'/',
-                            SameSite: None,
-                            Secure
 
                         })
                         if(cResult) {
