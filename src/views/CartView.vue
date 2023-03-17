@@ -13,12 +13,12 @@
             <th scope="col">Price</th>
           </tr>
         </thead>
-        <tbody class="done">
+        <tbody class="done" v-for="product in cart" :key="product.ProdId">
             <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>   
+            <td>{{product.ProdImg}}</td>
+            <td>{{product.ProdName}} {{product.Artist}}</td>
+            <td><input type="number"></td>
+            <td>R{{product.ProdPrice}}</td>   
             </tr>
         </tbody>
         <tfoot>
@@ -53,13 +53,21 @@ import SpinnerC from '@/components/Spinner.vue'
   data(){
     return{
       isLoading: true,
+      cart: [],
+      cartTotal: 0,
     }
+  },
+  methods: {
+    //  addProductToCart(product) {
+    //   this.cartItems.push(product);
+    //   this.cartTotal += product.price;
+    // },
   },
   created(){
     setTimeout(()=>{
       this.isLoading = false;
     }, 2000)
-  }  
+     }  
     }
 </script>
 

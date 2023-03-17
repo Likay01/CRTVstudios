@@ -25,7 +25,8 @@ const routes = [
   {
 path: '/single/:id',
 name: 'single',
-component: ()=> import('../views/SingleProdView.vue')
+component: ()=> import('../views/SingleProdView.vue'),
+props: true
   },
   {
     path: '/profile',

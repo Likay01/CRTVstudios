@@ -73,7 +73,7 @@ export default createStore({
       const res = await axios.get(`${url}product/${id}`);
       const {results, err} = await res.data;
       if(results) {
-        context.commit('setProduct',await res.data)
+        context.commit('setProduct',results[0])
       }else {
         context.commit('setMessage', err)
       }

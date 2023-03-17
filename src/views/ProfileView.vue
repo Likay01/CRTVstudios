@@ -4,7 +4,7 @@
       <div class="main">
 <div class="containing col">
   <img src="https://i.postimg.cc/CM7ZvndB/My-project-1-37.png" alt="" class="mt-5" >
-  <h4 class="mt-4">Username</h4>
+  <h4 class="mt-4">{{currentUser.Username}}</h4>
   <div class="info">
     <div class="PI col">
     <h6>Personal infomation</h6>
@@ -113,7 +113,13 @@ import SpinnerC from '@/components/Spinner.vue'
     setTimeout(()=>{
       this.isLoading = false;
     }, 2000)
-  }   
+  },
+  computed: {
+   currentUser(){     
+    return this.$store.state.login;
+   }  
+  },
+
     }
 </script>
 

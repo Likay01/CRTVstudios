@@ -8,13 +8,13 @@
 <div class="col">
   <div class="content">
     <h1 class="mt-4">{{product.ProdName}}</h1>
-    <h3>{{Artist}}</h3>
+    <h3>{{product.Artist}}</h3>
     <div class="des">
           <h6>{{product.ProdDiscription}}</h6>
     </div>
-    <h4>{{product.ProdPrice}}</h4>
+    <h3 class="PRICE">R{{product.ProdPrice}}</h3>
     <p>{{product.ProdDate}}</p>
-    <button type="submit" class="btn  btn-outline-warning text-dark mb-3">Cart</button>
+    <button type="submit" class="btn  btn-outline-warning text-dark mb-3"  @click="sendToCart">Cart</button>
 
   </div>
 </div>
@@ -29,6 +29,7 @@ import SpinnerC from '@/components/Spinner.vue'
     components: {
     SpinnerC,
   },
+ 
   data(){
     return{
       isLoading: true,
@@ -41,13 +42,20 @@ import SpinnerC from '@/components/Spinner.vue'
   },
   computed: {
     product(){
+      console.log(this.$store.state.product);
       return this.$store.state.product
     }
   },
   mounted() {
-    this.$store.dispatch('')
-  }  
-    }
+ console.log(location.pathname.split('/')[location.pathname.split('/').length-1])
+    this.$store.dispatch('getProduct', parseInt(location.pathname.split('/')[location.pathname.split('/').length-1]))
+  },
+  methods: {
+    sendToCart() {
+      this.$emit('product-added', this.product);
+    },
+  }
+}
 </script>
 
 <style scoped>
@@ -61,7 +69,7 @@ import SpinnerC from '@/components/Spinner.vue'
 }
 img{
   padding-top: 3rem;
-  widows: 15rem;
+  width: 27rem;
  align-items: center;
  opacity: 0;
  animation: fade 1s;  
@@ -86,7 +94,7 @@ h3{
 }
 .des{
   margin-top: 5rem;
-  height: 20rem;
+  height: 18rem;
   opacity: 0;
   animation: fade 1s;  
   animation-delay: 1.4s;
@@ -99,7 +107,7 @@ animation: fade 1s;
 animation-delay: 2s;
 animation-fill-mode: forwards; 
 }
-h4{
+.PRICE{
   opacity: 0;
   animation: fade 1s;  
   animation-delay: 1.7s;
@@ -108,7 +116,7 @@ h4{
 button{
   position: relative;
   left: 75%;
-  bottom: 3rem;
+  bottom: 5rem;
   width: 8rem;
   height: 3rem;
   opacity: 0;
