@@ -35,7 +35,10 @@ class Users {
                         jwToken, {
                             maxAge: 3600000,
                             httpOnly: true,
-                            path:'/'
+                            path:'/',
+                            SameSite: None,
+                            Secure
+
                         })
                         if(cResult) {
                             res.status(200).json({
