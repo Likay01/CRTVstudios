@@ -150,7 +150,7 @@ class Products {
     }
     addProduct(req, res) {
         const sqlQry = 
-        'insert into Products set = ?;';
+        'insert into Products set ?;';
         DB.query(sqlQry,[req.body],
             (err)=> {
                 if(err){
