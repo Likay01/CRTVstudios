@@ -58,6 +58,16 @@ export default createStore({
         context.commit('setMessage', err)
       }
     },
+      async addProduct(context, info) {
+        const res = await axios.post(`${url}product`, info);
+        const {msg, err} = await res.data;
+        if(msg) {
+          context.commit('setProduct', msg);
+        }else {
+          console.log(err)
+          context.commit('setMessage', err)
+        }
+    },
     async getProducts(context) {
       const res = await axios.get(`${url}products`);
       const {results, err} = await res.data;
@@ -87,21 +97,26 @@ export default createStore({
         context.commit('setMessage', err)
       }
     },
-    async updateUser(context, info) {
-      const res = await axios.post(`${url}updateUser`, info);
+    async updateProduct(context, info) {
+      const res = await axios.post(`${url}product/${info.ProdId}`, info);
+      console.log(res)
       const{msg, err} = await res.data;
       if(msg) {
-        context.commit('setMessage', msg);
-      }else {
+        context.commit('setProduct', msg);
+      }else { 
          context.commit('setMessage', err)
+         console.log(err)
       }
     },
-    async deleteUser(id) {
-      try{
-        await axios.delete(`${url}/users/${id}`);
-        this.getUsers();
-      }catch (err) {
-        console.log(err);
+    async deleteProduct(context, id) {
+      const res = await axios.delete(`${url}product/${id}`);
+      const{msg, err} = await res.data;
+      if(msg) {
+        context.commit('setProduct',msg[0]);
+        console.log(msg);
+
+      }else{
+        context.commit('setMessage', err)
       }
      }
 

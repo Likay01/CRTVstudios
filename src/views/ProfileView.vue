@@ -3,8 +3,10 @@
     <div v-else>
       <div class="main">
 <div class="containing col">
-  <img src="https://i.postimg.cc/CM7ZvndB/My-project-1-37.png" alt="" class="mt-5" >
-  <h4 class="mt-4">{{currentUser.Username}}</h4>
+  <div class="def ">
+     <img src="" alt="">
+  </div>
+  <h4 class="mt-4"></h4>
   <div class="info">
     <div class="PI col">
     <h6>Personal infomation</h6>
@@ -141,10 +143,20 @@ import SpinnerC from '@/components/Spinner.vue'
   animation-delay: 0.9s;
   animation-fill-mode: forwards; 
 }
-img{
+.def{
   border: solid 1px;
   border-radius: 50%;
-  width: 15rem;
+  width: 13rem;
+  height: 13rem;
+  margin: auto;
+  background-image: url(https://i.postimg.cc/pLdk38Td/226-2267516-male-shadow-circle-default-profile-image-round-hd.jpg);
+  background-position: center;
+  background-size: cover;
+}
+img{
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
 }
 .answer{
   font-size: smaller;

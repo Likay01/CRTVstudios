@@ -7,7 +7,8 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ">
               <li class="nav-item">
-                <router-link to="/profile" class="nav-link active" aria-current="page"><img src="https://i.postimg.cc/mkr16hdD/CRTVstudios.png" alt="home" class="Pro"></router-link>
+              
+                <router-link to="/profile" class="nav-link active" aria-current="page">  <div class="icon"><img src="" alt="" class="Pro"></div></router-link>
               </li>
               <li class="nav-item">
                 <router-link to="/about" class="nav-link active" aria-current="page">About Us</router-link>
@@ -116,10 +117,16 @@ border-radius: 0;
 i{
   margin-right: 1rem;
 }
-.Pro{
-  width: 25px;
+.icon{
+    width: 25px;
   height: 25px;
   border: solid 1px;
   border-radius: 50%;
+  background-image: url(https://i.postimg.cc/pLdk38Td/226-2267516-male-shadow-circle-default-profile-image-round-hd.jpg);
+  background-position: center;
+  background-size: cover;
+}
+.Pro{
+  width:100%;
 }
 </style>
