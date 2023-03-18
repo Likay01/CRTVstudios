@@ -163,7 +163,7 @@ class Products {
     updateProduct(req, res) {
         const sqlQry = 
         'update Products set ? where ProdId = ?';
-        DB.query(sqlQry,[req.body, rq.params.id],(err)=> {
+        DB.query(sqlQry,[req.body, req.params.id],(err)=> {
             if(err){
                 res.status(400).json({err: "Unable to update product."});
             }else {
