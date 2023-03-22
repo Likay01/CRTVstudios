@@ -28,18 +28,18 @@
           <td>R{{product.ProdPrice}}</td>
           <td>{{product.ProdDiscription}}</td>
           <td>{{product.ProdDate}}</td>
-          <td><button type="button" class="btn btn-danger"  @submit.prevent="Delete"><i class="fa-regular fa-trash-can"></i></button></td>
+          <td><button type="button" class="btn btn-danger" @click="deleteProduct(product.ProdId)"><i class="fa-regular fa-trash-can"></i></button></td>
           <td><button type="button" class="btn btn-success"  data-bs-toggle="modal" :data-bs-target="'#EditModal'+ `${product.ProdId}`"><i class="fa-regular fa-pen-to-square"></i></button></td>
           <!-- Edit Modal -->
           
-                <div class="modal fade" :id="'EditModal' + `${product.ProdId}`" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" :id="'EditModal' + `${product.ProdId}`" tabindex="-1" :aria-labelledby="'exampleModalLabel' + product.ProdId " aria-hidden="true">
                   <div class="modal-dialog">
                     <div class="modal-content bg-success">
                       <div class="modal-header">
-                        <h1 class="modal-title fs-5 text-white" id="exampleModalLabel">EDIT PRODUCT</h1>
+                        <h1 class="modal-title fs-5 text-white" :id="'exampleModalLabel' + product.ProdId">EDIT PRODUCT</h1>
                       </div>
                       <div class="modal-body">
-                        <form @submit.prevent="Edit">
+                        <form @submit.prevent="Edit(product)">
                           <div class="mb-3">
                             <label for="product" class="form-label text-white">Product name</label>
                             <input type="text" class="form-control" id="product1" aria-describedby="emailHelp" v-model="product.ProdName" required>
@@ -63,7 +63,7 @@
                             <input type="text" class="form-control" id="product" v-model="product.ProdDiscription" required>
                           </div>
           
-                          <button type="submit" class="btn btn-dark text-white" @click="Edit">Submit</button>
+                          <button type="submit" class="btn btn-dark text-white" data-bs-dismiss="modal" @click="Edit">Submit</button>
                         </form>
                       </div>
                       <div class="modal-footer">
@@ -120,7 +120,7 @@
                   <input type="text" class="form-control" id="product" v-model="info.ProdDiscription" required>
                 </div>
 
-                <button type="submit" class="btn btn-dark text-white">Submit</button>
+                <button type="submit" class="btn btn-dark text-white" data-bs-dismiss="modal">Submit</button>
               </form>
             </div>
             <div class="modal-footer">
@@ -163,8 +163,66 @@
            <td>{{user.gender}}</td>
            <td>{{user.UserRole}}</td>
            <td>{{user.JoinDate}}</td>
-           <td><button type="button" class="btn btn-danger" @click="user.UsedId"><i class="fa-regular fa-trash-can"></i></button></td>
-           <td><button type="button" class="btn btn-success"><i class="fa-solid fa-user-pen"></i></button></td>
+           <td><button type="button" class="btn btn-danger"  @click="deleteUser(user.UserId)"><i class="fa-regular fa-trash-can"></i></button></td>
+           <td><button type="button" class="btn btn-success"  data-bs-toggle="modal" :data-bs-target="'#EditUserModal'+ `${user.UserId}`"><i class="fa-solid fa-user-pen"></i></button></td>
+
+
+                    <!-- Edit Modal -->
+          
+                    <div class="modal fade" :id="'EditUserModal' + `${user.UserId}`" tabindex="-1" :aria-labelledby="'exampleModalLabel' + user.UserId " aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content bg-success">
+                          <div class="modal-header">
+                            <h1 class="modal-title fs-5 text-white" :id="'exampleModalLabel' + user.UserId">EDIT User</h1>
+                          </div>
+                          <div class="modal-body">
+                            <form @submit.prevent="EditUser(user)">
+                              <div class="mb-3">
+                                <label for="User" class="form-label text-white">First name</label>
+                                <input type="text" class="form-control" id="User1" aria-describedby="emailHelp" v-model="user.firstname" required>
+                              </div>
+                              <div class="mb-3">
+                                <label for="User" class="form-label text-white">Surname</label>
+                                <input type="text" class="form-control" id="User" v-model="user.Surname" required>
+                              </div>
+                              <div class="mb-3">
+                                <label for="User" class="form-label text-white">Profile image</label>
+                                <input type="text" class="form-control" id="User" v-model="user.profilePic" required>
+                              </div>
+              
+                              <div class="mb-3">
+                                <label for="User" class="form-label text-white">Username</label>
+                                <input type="text" class="form-control" id="User" v-model="user.Username" required>
+                              </div>
+              
+                              <div class="mb-3">
+                                <label for="User" class="form-label text-white">Email</label>
+                                <input type="text" class="form-control" id="User" v-model="user.email" required>
+                              </div>
+              
+                              <div class="mb-3">
+                                <label for="User" class="form-label text-white">Password</label>
+                                <input type="text" class="form-control" id="User" v-model="user.psswrd" required>
+                              </div>
+
+                              <div class="mb-3">
+                                <label for="User" class="form-label text-white">Gender</label>
+                                <input type="text" class="form-control" id="User" v-model="user.gender" required>
+                              </div>
+
+                              <div class="mb-3">
+                                <label for="User" class="form-label text-white">Role</label>
+                                <input type="text" class="form-control" id="User" v-model="user.UserRole" required>
+                              </div>
+                              <button type="submit" class="btn btn-dark text-white" data-bs-dismiss="modal" @click="Edit">Submit</button>
+                            </form>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-dark text-white" data-bs-dismiss="modal">Close</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
           </tr>
         </tbody>
       </table>
@@ -190,28 +248,39 @@
       const st = useStore();
 
       const Edit = (product)=> {
-        return st.dispatch('updateProduct', {
-        ProdName: product.ProdName,
-        Artist: product.Artist,
-        ProdImg: product.ProdImg,
-        ProdPrice: product.ProdPrice,
-        ProdDiscription: product.ProdDiscription, 
-        });
-        // st.dispatch('getProduct', {
-        // ProdName: product.ProdName,
-        // Artist: product.Artist,
-        // ProdImg: product.ProdImg,
-        // ProdPrice: product.ProdPrice,
-        // ProdDiscription: product.ProdDiscription, 
-        // });
-      }
+        console.log(product)
+        return st.dispatch('updateProduct',{
+          ProdId: product.ProdId,
+          product: {
+            ProdName: product.ProdName,
+            Artist: product.Artist,
+            ProdImg: product.ProdImg,
+            ProdPrice: product.ProdPrice,
+            ProdDiscription: product.ProdDiscription, 
+          }
+        })
+      };
+        const EditUser = (user)=> {
+        console.log(user)
+        return st.dispatch('updateUser', {
+          UserId: user.UserId,
+          user: {
+            firstname: user.firstname,
+            Surname: user.Surname,
+            profilePic: user.profilePic,
+            Username: user.Username,
+            email: user.email,
+            psswrd: user.psswrd,
+            gender: user.gender,
+            UserRole: user.UserRole,
+            JoinDate: user.JoinDate
+          }
+        })
+      };
       const Add = ()=> {
             st.dispatch('addProduct', info);
             st.dispatch('getProduct', info);
       } 
-      const Delete = ()=> {
-        st.dispatch('deleteProduct');
-      }
         st.dispatch('getProducts');
         st.dispatch('getUsers');
         let products = computed(() => st.state.products);
@@ -222,7 +291,7 @@
           users,
           Add,
           Edit,
-          Delete
+          EditUser
         }
       },
     components: {
@@ -239,6 +308,12 @@
     }, 2000);
   },
   methods: {
+    deleteProduct(id) {
+      this.$store.dispatch('deleteProduct', id)
+    },
+    deleteUser(id) {
+      this.$store.dispatch('deleteUser', id)
+    },
   },
 }
     </script>

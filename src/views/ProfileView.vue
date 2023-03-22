@@ -2,9 +2,10 @@
     <SpinnerC v-if="isLoading" />     
     <div v-else>
       <div class="main">
-<div class="containing col">
+<div class="containing col"  v-for="user in users" :key="user.UserId">
+  <h1 class="text-black">My Account</h1>
   <div class="def ">
-     <img src="" alt="">
+     <img :src="user.profilePic" alt="">
   </div>
   <h4 class="mt-4"></h4>
   <div class="info">
@@ -12,30 +13,30 @@
     <h6>Personal infomation</h6>
     <div class="text">
      <p class="m-0 text-black">Name</p>
-  <p class="answer">lindo</p>
+  <p class="answer">{{user.firstname}}</p>
     </div>
     <div class="text">
       <p class="m-0 text-black">Surname</p>
-   <p class="answer">lindo</p>
+   <p class="answer">{{user.Surname}}</p>
      </div>
      <div class="text">
       <p class="m-0 text-black">Gender</p>
-   <p class="answer">lindo</p>
+   <p class="answer">{{user.gender}}</p>
      </div>
      <div class="text mb-3">
       <p class="m-0 text-black">Date of membership</p>
-   <p class="answer">lindo</p>
+   <p class="answer">{{user.JoinDate}}</p>
      </div>  
     </div>
      <div class="AD col">
      <h6>Account Details</h6>   
      <div class="text">
       <p class="m-0 text-black">Email</p>
-   <p class="answer">lindo</p>
+   <p class="answer">{{user.email}}</p>
      </div>
      <div class="text mb-4">
       <p class="m-0 text-black">Password</p>
-   <p class="answer dotted" type="password">lindo</p>
+   <p class="answer dotted" type="password">{{user.psswrd}}</p>
      </div>
      </div>
     <button type="button" class="btn row"><i class="fa-solid fa-user-pen"  data-bs-toggle="modal" data-bs-target="#staticBackdrop"></i></button>
@@ -101,14 +102,28 @@
 
 <script>
 import SpinnerC from '@/components/Spinner.vue'
+import { useStore } from 'vuex'
+import { onMounted } from 'vue'
+import {computed} from '@vue/runtime-core';
 
     export default {
+      setup(){
+const st = useStore()
+  onMounted(async() => {
+ await st.dispatch('getUser') 
+})
+let users = computed(() => st.state.users);
+return{
+  users
+}
+},
   components: {
     SpinnerC,
   },
   data(){
     return{
       isLoading: true,
+
     }
   },
   created(){
