@@ -28,6 +28,10 @@ route.post('/login', bodyParser.json(), (req, res)=>{
 route.get('/users',(req, res)=>{
     user.getUsers(req, res);
 });
+// get a user
+route.put('/user/:id', bodyParser.json(), (req, res)=> {
+    user.getUser(req, res);
+})
 // Update
 route.put('/user/:id', bodyParser
 .json(), (req, res)=>{
