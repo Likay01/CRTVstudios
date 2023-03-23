@@ -40,6 +40,8 @@
      </div>
      </div>
     <button type="button" class="btn row"><i class="fa-solid fa-user-pen"  data-bs-toggle="modal" data-bs-target="#staticBackdrop"></i></button>
+    <button type="button" class="btn row btn-dark">Logout?</button>
+
   </div>
 </div>
 <div class="col">

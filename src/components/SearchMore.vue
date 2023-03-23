@@ -7,11 +7,11 @@
                <option value="2">Photography</option>
              </select>
                <form class="d-flex w-25  mt-3" role="search">
-                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" v-model="search">
+                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" v-model="searchbar">
                  <button class="btn btn-warning" type="submit">Search</button>
                </form>
          </div>
-         <div class="card" v-for="product in searchbar" :key="product.ProdId" style="width: 18rem;">
+         <div class="card" v-for="product in search" :key="product.ProdId" style="width: 18rem;">
           <img :src="product.ProdImg" alt="">
               <h5 class="card-title" >{{product.ProdName}}</h5>
               <h6 class="card-title" >{{product.Artist}}</h6>
@@ -23,7 +23,17 @@
 
 <script>
     export default {
-        
+      computed: {
+        products() {
+              return this.$store.state.products;
+          },
+          items() {
+            if(this.searchbar.trim().length > 0){
+              return this.products.filter((name)=> name.ProdName.toLowerCase().includes(this.searchbar.trim()))
+            }
+              return this.products
+          }, 
+      }
     }
 </script>
 
