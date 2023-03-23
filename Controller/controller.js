@@ -33,8 +33,7 @@ route.get('/user/:id', bodyParser.json(), (req, res)=> {
     user.getUser(req, res);
 })
 // Update
-route.put('/user/:id', bodyParser
-.json(), (req, res)=>{
+route.put('/user/:id', bodyParser.json(), (req, res)=>{
 user.updateUser(req, res);
 });
 // Sign up
