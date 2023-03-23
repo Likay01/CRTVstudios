@@ -214,7 +214,7 @@
                                 <label for="User" class="form-label text-white">Role</label>
                                 <input type="text" class="form-control" id="User" v-model="user.UserRole" required>
                               </div>
-                              <button type="submit" class="btn btn-dark text-white" data-bs-dismiss="modal" @click="Edit">Submit</button>
+                              <button type="submit" class="btn btn-dark text-white" data-bs-dismiss="modal" @click="EditUser">Submit</button>
                             </form>
                           </div>
                           <div class="modal-footer">

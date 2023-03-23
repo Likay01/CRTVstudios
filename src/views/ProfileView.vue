@@ -7,7 +7,7 @@
   <div class="def ">
      <img :src="user.profilePic" alt="">
   </div>
-  <h4 class="mt-4"></h4>
+  <h4 class="mt-4">{{user.Username}}</h4>
   <div class="info">
     <div class="PI col">
     <h6>Personal infomation</h6>
