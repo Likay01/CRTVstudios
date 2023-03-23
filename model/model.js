@@ -106,11 +106,11 @@ class Users {
     }
     updateUser(req, res) {
         let data = req.body;
-        if(data.psswrd !== null ||
-            data.psswrd !== undefined)
+        if((data.psswrd !== null)|| (data.psswrd !== undefined)){
             data.psswrd = hashSync(data.psswrd, 15);
+        }
             const sqlQry =
-            `update Users set ? where UserId = ?`;
+            `update Users set ? where UserId = ?;`;
 
             DB.query(sqlQry,[data, req.params.id], (err)=>{
                 if(err) throw err;
