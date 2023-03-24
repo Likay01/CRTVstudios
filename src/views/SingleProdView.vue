@@ -1,7 +1,7 @@
-<template>
+<!-- <template>
     <SpinnerC v-if="isLoading" />  
     <div v-else>
-<div class="main" v-if="product">
+<div class="main" v-if="product" >
 <div class="col">
   <img :src="product.ProdImg" alt="">
 </div>
@@ -14,7 +14,7 @@
     </div>
     <h3 class="PRICE">R{{product.ProdPrice}}</h3>
     <p>{{product.ProdDate}}</p>
-    <button type="submit" class="btn  btn-outline-warning text-dark mb-3"  @click="sendToCart">Cart</button>
+    <button type="submit" id="buy" class="btn  btn-outline-warning text-dark mb-3"  @click="sendToCart">Cart</button>
 
   </div>
 </div>
@@ -56,8 +56,61 @@ import SpinnerC from '@/components/Spinner.vue'
     },
   }
 }
-</script>
+</script> -->
+<template>
+  <SpinnerC v-if="isLoading" />
+  <div v-else>
+    <div class="main" v-if="product">
+      <div class="col">
+        <img :src="product.ProdImg" alt="">
+      </div>
+      <div class="col">
+        <div class="content">
+          <h1 class="mt-4">{{product.ProdName}}</h1>
+          <h3>{{product.Artist}}</h3>
+          <div class="des">
+            <h6>{{product.ProdDiscription}}</h6>
+          </div>
+          <h3 class="PRICE">R{{product.ProdPrice}}</h3>
+          <p>{{product.ProdDate}}</p>
+          <button type="submit" id="buy" class="btn btn-outline-warning text-dark mb-3" @click="addToCart">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+<script>
+import SpinnerC from '@/components/Spinner.vue';
 
+export default {
+  components: {
+    SpinnerC,
+  },
+  data() {
+    return {
+      isLoading: true,
+    };
+  },
+  created() {
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 2000);
+  },
+  computed: {
+    product() {
+      return this.$store.state.product;
+    },
+  },
+  mounted() {
+    this.$store.dispatch('getProduct', parseInt(location.pathname.split('/')[location.pathname.split('/').length - 1]));
+  },
+  methods: {
+    addToCart() {
+      this.$store.dispatch('addToCart', this.product);
+    },
+  },
+};
+</script>
 <style scoped>
 .main{
   height: 100vh;

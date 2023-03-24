@@ -10,8 +10,8 @@ export default createStore({
     product:null,
     message:null,
     login:null,
-    cart:null,
-    searchbar:null
+    cartItems: null,
+    cartTotal: 0,
   },
   mutations: {
     setUsers(state, values) {
@@ -22,7 +22,6 @@ export default createStore({
     },
     setProducts(state, values) {
       state.products = values
-      state.searchbar = values
     },
     setProduct(state, value) {
       state.product = value
@@ -38,14 +37,8 @@ export default createStore({
     },
     setCart(state, value) {
       state.cart = value
-    },
-    setSearch(state,search) {
-      if(search) {
-              state.searchbar = state.products.search(product => product.name.to().and(search.to()))
-      }else{
-        state.searchbar = state.products
-      }
     }
+
   },
   actions: {
     async login(context, info) {
@@ -99,8 +92,8 @@ export default createStore({
         context.commit('setMessage', err)
       }
     },
-    async addCart(context) {
-      const res = await axios.get(`${url}Cart`);
+    async addCart(context, info) {
+      const res = await axios.get(`${url}Cart`, info);
       const{results, err} = await res.data;
       if(results) {
         context.commit('setCart', results);
@@ -112,7 +105,7 @@ export default createStore({
       const res = await axios.get(`${url}Cart/${id}`);
       const{result, err} = await res.data;
       if(result) {
-        context.commit('setCart', result[0])
+        context.commit('setCart', result)
       }else{
         context.commit('setMessage', err)
       }

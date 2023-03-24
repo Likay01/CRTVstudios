@@ -39,8 +39,8 @@
    <p class="answer dotted" type="password">{{user.psswrd}}</p>
      </div>
      </div>
-    <button type="button" class="btn row"><i class="fa-solid fa-user-pen"  data-bs-toggle="modal" data-bs-target="#staticBackdrop"></i></button>
-    <button type="button" class="btn row btn-dark">Logout?</button>
+    <button type="button" class="btn rowEd"><i class="fa-solid fa-user-pen"  data-bs-toggle="modal" data-bs-target="#staticBackdrop"></i></button>
+    <button type="button" class="btn row btn-dark log">Logout?</button>
 
   </div>
 </div>
@@ -170,6 +170,11 @@ return{
   background-position: center;
   background-size: cover;
 }
+.log{
+  height: 50px;
+  margin-top: 12.5rem;
+  position: relative;
+ right: 8rem;}
 img{
   width: 100%;
   height: 100%;
@@ -187,7 +192,7 @@ font-size: medium;
   margin-top: 5rem;
   margin-left: 25%;
 }
-.row{
+.rowEd{
 height: 70px;
 margin-top: 12.5rem;
 position: relative;

@@ -1,10 +1,12 @@
 <template>
     <div>
         <div class="sub d-flex">
-            <select class="form-select w-25 mt-3" aria-label="Default select example">
+            <select class="form-select w-25 mt-3" aria-label="Default select example" v-model="artist">
                <option selected >filter</option>
-               <option value="1">Paintings</option>
-               <option value="2">Photography</option>
+               <option value="Naledi Modupi">Naledi Modupi</option>
+               <option value="Karen Rosalie">Karen Rosalie</option>
+               <option value="Inès Longevial">Inès Longevial</option>
+               <option value="Brian Donnelly">Brian Donnelly</option>
              </select>
                <form class="d-flex w-25  mt-3" role="search">
                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" v-model="searchbar">
@@ -23,15 +25,22 @@
 
 <script>
     export default {
+      data(){
+        return{
+          searchbar:'',
+          artist:''
+        }
+      },
       computed: {
         products() {
               return this.$store.state.products;
           },
-          items() {
+          search() {
+            let filtering = this.product.filter(item => item.Artist == this.artist || this.artist=='')
             if(this.searchbar.trim().length > 0){
-              return this.products.filter((name)=> name.ProdName.toLowerCase().includes(this.searchbar.trim()))
+              return filtering.filter((name)=> name.ProdName.toLowerCase().includes(this.searchbar.trim()))
             }
-              return this.products
+              return filtering
           }, 
       }
     }

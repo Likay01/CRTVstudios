@@ -13,13 +13,21 @@
             <th scope="col">Price</th>
           </tr>
         </thead>
-        <tbody class="done" v-for="product in cart" :key="product.ProdId">
+        <!-- <tbody class="done" v-for="product in cart" :key="product.ProdId">
             <tr>
             <td>{{product.ProdImg}}</td>
             <td>{{product.ProdName}} {{product.Artist}}</td>
             <td><input type="number"></td>
             <td>R{{product.ProdPrice}}</td>   
             </tr>
+        </tbody> -->
+        <tbody class="done" v-for="product in cartItems" :key="product.id">
+          <tr>
+            <td><img :src="product.image" alt=""></td>
+            <td>{{ product.name }}</td>
+            <td><input type="number" v-model.number="product.quantity"></td>
+            <td>R{{ product.price }}</td>
+          </tr>
         </tbody>
         <tfoot>
             <tr>

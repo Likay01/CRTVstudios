@@ -20,7 +20,7 @@
               class="nav-link active"
               aria-current="page"
             >
-              <div class="icon"><img src="" alt="" class="Pro" /></div
+              <div class="icon"><img src="" alt="" class="Pro"/></div
             ></router-link>
           </li>
           <li class="nav-item">
@@ -229,5 +229,16 @@ i {
 }
 .Pro {
   width: 100%;
+}
+@media only screen and (max-width: 720px) {
+  img{
+   padding-bottom: 2rem;
+  }
+  .dropdown-item{
+    width: 74px;
+  }
+  a{
+    padding: 2px;
+  }
 }
 </style>
