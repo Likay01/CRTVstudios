@@ -184,14 +184,10 @@ class Cart {
     getCart(req, res) {
         const sqlQry =
         `select ProdImg, ProdName, Artist, ProdPrice, Cart.quantity from Cart inner join Products on Cart.ProdId = Products.ProdId where Cart.UserId = ${req.params.id};`;
-     DB.query(sqlQry, [req.body],
-        (err)=> {
-            if (err) {
-                res.status(400).json({err: "Unable to access cart."})
-            }else {
-                res.status(200).json({msg: "Successfully added to cart."});
-            }
-        })
+        DB.query(sqlQry, (err, results)=> {
+            if(err) throw err;
+            res.status(200).json({results: results})
+        });
     };
     addCart(req, res) {
         const sqlQry =
