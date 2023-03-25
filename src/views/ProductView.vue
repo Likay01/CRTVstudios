@@ -1,79 +1,3 @@
-<!-- <template>
-  <SpinnerC v-if="isLoading" />  
-<div v-else>
-    <div class="body">
-      <div class="sub d-flex">
-        <select class="form-select w-25 mt-3" aria-label="Default select example" v-model="artist">
-           <option selected >filter</option>
-           <option value="Naledi Modupi">Naledi Modupi</option>
-           <option value="Karen Rosalie">Karen Rosalie</option>
-           <option value="Inès Longevial">Inès Longevial</option>
-           <option value="Brian Donnelly">Brian Donnelly</option>
-         </select>
-           <form class="d-flex w-25  mt-3" role="search">
-             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" v-model="searchbar">
-           </form>
-     </div>
-            <div class="container">
-             <div class="row">
-              <div class="card" v-for="product in products" :key="product.ProdId" style="width: 18rem;">
-                <img :src="product.ProdImg" alt="">
-                    <h5 class="card-title" >{{product.ProdName}}</h5>
-                    <h6 class="card-title" >{{product.Artist}}</h6>
-                    <h6 class="card-title" >R{{product.ProdPrice}}</h6>
-          <router-link :to="{name:'single', params:{id:product.ProdId}}" class="btn btn-warning">More</router-link>       
-             </div>
-
-            </div>
-     </div> 
-    </div>
-</div>
-</template>
-
-<script>
-import {useStore} from 'vuex';
-import {computed} from '@vue/runtime-core';
-import SpinnerC from '@/components/Spinner.vue'
-    export default {
-        setup() {
-  const store = useStore();
-  store.dispatch('getProducts');
-  let products = computed(() => store.state.products);
-
-  return {
-    products,
-  }
-},
-components: {
-    SpinnerC
-  },
-  data(){
-    return{
-      isLoading: true,
-      searchbar:'',
-      artist:''
-    }
-  },
-  created(){
-    setTimeout(()=>{
-      this.isLoading = false;
-    }, 2000)
-  },
-  computed:{
-        product() {
-              return this.$store.state.products;
-          },
-          search(){
-            let filtering = this.products.filter(products => products.Artist == this.artist || this.artist =='')
-            if(this.searchbar.trim().length > 0){
-              return filtering.filter((input)=> input.Artist.toLowerCase().includes(this.searchbar.trim().toLowerCase()))
-            }
-              return filtering
-          }, 
-      }
-
-    }
-</script> -->
 <template>
   <SpinnerC v-if="isLoading" />  
   <div v-else>
@@ -136,7 +60,7 @@ export default {
       });
       if (this.searchbar.trim().length > 0) {
         return filtering.filter(product => {
-          return product.Artist.toLowerCase().includes(this.searchbar.trim().toLowerCase());
+          return product.ProdName.toLowerCase().includes(this.searchbar.trim().toLowerCase());
         });
       }
       return filtering;

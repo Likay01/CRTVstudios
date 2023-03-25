@@ -29,10 +29,6 @@
                 <input type="password" class="form-control" id="floatingPassword" placeholder="eg.********" autocomplete="off" v-model="info.psswrd" required>
                 <label for="floatingInput">Password</label>
               </div>
-              <!-- <div class="form-floating mb-3">
-                <input type="gender" class="form-control" id="floatingInput" placeholder="example@CRTVstudios.com" v-model="info.gender" required>
-                <label for="floatingInput">Gender</label>
-              </div>  -->
               <div class="form-floating mb-3">
                 <select class="form-select" id="floatingSelect" aria-label="Floating label select example" v-model="info.gender" required>
                   <option value="female">Female</option>

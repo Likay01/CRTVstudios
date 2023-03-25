@@ -135,7 +135,7 @@ return{
   },
   computed: {
    currentUser(){     
-    return this.$store.state.login;
+    return this.$store.state.user;
    }  
   },
 

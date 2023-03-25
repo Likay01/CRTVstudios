@@ -258,7 +258,8 @@
             ProdPrice: product.ProdPrice,
             ProdDiscription: product.ProdDiscription, 
           }
-        })
+        }),
+        location.reload()
       };
         const EditUser = (user)=> {
         console.log(user)
@@ -275,11 +276,13 @@
             UserRole: user.UserRole,
             JoinDate: user.JoinDate
           }
-        })
+        }),
+        location.reload()
       };
       const Add = ()=> {
             st.dispatch('addProduct', info);
             st.dispatch('getProduct', info);
+            location.reload()
       } 
         st.dispatch('getProducts');
         st.dispatch('getUsers');
@@ -310,9 +313,12 @@
   methods: {
     deleteProduct(id) {
       this.$store.dispatch('deleteProduct', id)
+      location.reload()
     },
     deleteUser(id) {
       this.$store.dispatch('deleteUser', id)
+      location.reload()
+
     },
   },
 }

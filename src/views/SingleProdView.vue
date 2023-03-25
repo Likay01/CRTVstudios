@@ -1,62 +1,3 @@
-<!-- <template>
-    <SpinnerC v-if="isLoading" />  
-    <div v-else>
-<div class="main" v-if="product" >
-<div class="col">
-  <img :src="product.ProdImg" alt="">
-</div>
-<div class="col">
-  <div class="content">
-    <h1 class="mt-4">{{product.ProdName}}</h1>
-    <h3>{{product.Artist}}</h3>
-    <div class="des">
-          <h6>{{product.ProdDiscription}}</h6>
-    </div>
-    <h3 class="PRICE">R{{product.ProdPrice}}</h3>
-    <p>{{product.ProdDate}}</p>
-    <button type="submit" id="buy" class="btn  btn-outline-warning text-dark mb-3"  @click="sendToCart">Cart</button>
-
-  </div>
-</div>
-</div>
-    </div>
-</template>
-
-<script>
-import SpinnerC from '@/components/Spinner.vue'
-
-    export default {
-    components: {
-    SpinnerC,
-  },
- 
-  data(){
-    return{
-      isLoading: true,
-    }
-  },
-  created(){
-    setTimeout(()=>{
-      this.isLoading = false;
-    }, 2000)
-  },
-  computed: {
-    product(){
-      console.log(this.$store.state.product);
-      return this.$store.state.product
-    }
-  },
-  mounted() {
- console.log(location.pathname.split('/')[location.pathname.split('/').length-1])
-    this.$store.dispatch('getProduct', parseInt(location.pathname.split('/')[location.pathname.split('/').length-1]))
-  },
-  methods: {
-    sendToCart() {
-      this.$emit('product-added', this.product);
-    },
-  }
-}
-</script> -->
 <template>
   <SpinnerC v-if="isLoading" />
   <div v-else>
@@ -73,7 +14,7 @@ import SpinnerC from '@/components/Spinner.vue'
           </div>
           <h3 class="PRICE">R{{product.ProdPrice}}</h3>
           <p>{{product.ProdDate}}</p>
-          <button type="submit" id="buy" class="btn btn-outline-warning text-dark mb-3" @click="addToCart">Add to Cart</button>
+          <button type="submit" id="buy" class="btn btn-outline-warning text-dark mb-3" @click="addCart(product)">Add to Cart</button>
         </div>
       </div>
     </div>
@@ -81,7 +22,9 @@ import SpinnerC from '@/components/Spinner.vue'
 </template>
 <script>
 import SpinnerC from '@/components/Spinner.vue';
-
+import { computed } from 'vue';
+  import { useStore } from 'vuex';
+  import cookies from 'js-cookie';
 export default {
   components: {
     SpinnerC,
@@ -96,20 +39,36 @@ export default {
       this.isLoading = false;
     }, 2000);
   },
+  async addCart(product) {
+      const UserId = cookies.get('UserId', );
+      console.log(UserId, product.ProdId);
+      this.$store.dispatch('addCart', {
+        UserId: UserId,
+        product: {
+          UserId: UserId,
+          ProdId: product.ProdId
+        }
+      })
+    },
   computed: {
     product() {
       return this.$store.state.product;
     },
   },
+  setup() {
+    const store = useStore();
+    const product = computed(() => store.state.product);
+    return {
+      // eslint-disable-next-line vue/no-dupe-keys
+      product
+    }
+  },
   mounted() {
     this.$store.dispatch('getProduct', parseInt(location.pathname.split('/')[location.pathname.split('/').length - 1]));
-  },
-  methods: {
-    addToCart() {
-      this.$store.dispatch('addToCart', this.product);
+    this.$store.dispatch('fetchProductByID', this.$route.params.id)
+      console.log(this.$route.params.id)
     },
-  },
-};
+  };
 </script>
 <style scoped>
 .main{

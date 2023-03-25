@@ -10,7 +10,7 @@ export default createStore({
     product:null,
     message:null,
     login:null,
-    cartItems: null,
+    cart: null,
     cartTotal: 0,
   },
   mutations: {
@@ -46,7 +46,8 @@ export default createStore({
       const {result, err} = await res.data;
       if(result) {
         context.commit('setLogin', result);
-        console.log(result)
+        console.log(result),
+        alert('You are successfully logged in!')
       }else {
         context.commit('setUsers', err);
       }
@@ -56,16 +57,21 @@ export default createStore({
       const {msg, err} = await res.data;
       if(msg) {
         context.commit('setUsers', msg);
+        alert(msg)
+
       }else {
         console.log(err)
         context.commit('setMessage', err)
       }
+    
     },
       async addProduct(context, info) {
         const res = await axios.post(`${url}product`, info);
         const {msg, err} = await res.data;
         if(msg) {
           context.commit('setProduct', msg);
+          alert(msg)
+
         }else {
           console.log(err)
           context.commit('setMessage', err)
@@ -93,7 +99,7 @@ export default createStore({
       }
     },
     async addCart(context, info) {
-      const res = await axios.get(`${url}Cart`, info);
+      const res = await axios.post(`${url}Cart`, info);
       const{results, err} = await res.data;
       if(results) {
         context.commit('setCart', results);
@@ -135,6 +141,7 @@ export default createStore({
       const{msg, err} = await res.data;
       if(msg) {
         context.commit('setMessage', msg);
+        alert('Updated successfully')
       }else { 
          context.commit('setMessage', err)
          console.log(err)
@@ -147,6 +154,8 @@ export default createStore({
       const{msg, err} = await res.data;
       if(msg) {
         context.commit('setProduct', msg);
+        alert('Updated successfully')
+
       }else { 
          context.commit('setMessage', err)
          console.log(err)
@@ -159,6 +168,8 @@ export default createStore({
         context.commit('setProduct',msg[0]);
         console.log(msg);
         dispatch('getProducts');
+        alert('Deleted successfully')
+
       }else{
         context.commit('setMessage', err)
       }
@@ -170,6 +181,8 @@ export default createStore({
         context.commit('setUser',msg[0]);
         console.log(msg);
         dispatch('getUsers');
+        alert('Deleted successfully')
+
       }else{
         context.commit('setMessage', err)
       }
