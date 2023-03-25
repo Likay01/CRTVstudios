@@ -183,7 +183,7 @@ class Products {
 class Cart {
     getCart(req, res) {
         const sqlQry =
-        `select Products.ProdImg,  Products.ProdName,  Products.Artist,  Products.ProdPrice, Cart.quantity from Cart inner join Products on Cart.ProdId = Products.ProdId where Cart.UserId = ${req.params.id};`;
+        `select ProdImg, ProdName, Artist, ProdPrice, Cart.quantity from Cart inner join Products on Cart.ProdId = Products.ProdId where Cart.UserId = ${req.params.id};`;
      DB.query(sqlQry, [req.body],
         (err)=> {
             if (err) {
