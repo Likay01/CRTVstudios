@@ -7,12 +7,101 @@
     <title>Home</title>
 </head>
 <body>
-    <h2>Route description</h2>
-    <table>
-        <tr>
-            <th>Method</th>
-            <th>Path</th>
-        </tr>
-    </table>
+    <div class="container">
+        <h5 class="display-5 text-center">Home Route</h5>
+        <table class="table table-striped table-dark">
+          <thead>
+            <tr>
+              <th scope="col">Method</th>
+              <th scope="col">Path</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td scope="row">GET</td>
+              <td>/</td>
+              <td>Home Page</td>
+            </tr>
+          </tbody>
+        </table>
+        <h5 class="display-5 text-center">User Routes</h5>
+        <table class="table table-striped table-dark">
+          <thead>
+            <th scope="col">Method</th>
+            <th scope="col">Path</th>
+            <th scope="col">Description</th>
+          </thead>
+          <tbody>
+            <tr>
+              <td scope="row">POST</td>
+              <td>/register</td>
+              <td>Register a new user.</td>
+            </tr>
+            <tr>
+              <td scope="row">POST</td>
+              <td>/login</td>
+              <td>Login a user that's registered.</td>
+            </tr>
+            <tr>
+              <td scope="row">GET</td>
+              <td>/users</td>
+              <td>get all registered users</td>
+            </tr>
+            <tr>
+              <td scope="row">GET</td>
+              <td>/user/id</td>
+              <td>Get a user by using the id.</td>
+            </tr>
+            <tr>
+              <td scope="row">DELETE</td>
+              <td>/user/:id</td>
+              <td>Delete a product by using it's id.</td>
+            </tr>
+            <tr>
+              <td scope="row">PUT</td>
+              <td>/user/:id</td>
+              <td>Update an user profile by using the the id.</td>
+            </tr>
+          </tbody>
+        </table>
+        <h5 class="display-5 text-center">Product routes</h5>
+        <table class="table table-striped table-dark">
+          <thead>
+            <tr>
+              <th scope="col">Method</th>
+              <th scope="col">Path</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td scope="row">GET</td>
+              <td>/products</td>
+              <td>Get all the Products.</td>
+            </tr>
+            <tr>
+              <td scope="row">GET</td>
+              <td>/product/:id</td>
+              <td>Get a single Product by using the id.</td>
+            </tr>
+            <tr>
+              <td scope="row">POST</td>
+              <td>/product</td>
+              <td>Add a Product to the API.</td>
+            </tr>
+            <tr>
+              <td scope="row">PUT</td>
+              <td>/product/:id</td>
+              <td>Update a Product by making use of the unique id.</td>
+            </tr>
+            <tr>
+              <td scope="row">DELETE</td>
+              <td>/product/:id</td>
+              <td>Delete a single Product by using the id.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 </body>
 </html>
