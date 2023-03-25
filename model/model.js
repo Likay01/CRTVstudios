@@ -192,6 +192,27 @@ class Cart {
                 res.status(200).json({msg: "Successfully added to cart."});
             }
         })
+    };
+    addCart(req, res) {
+        const sqlQry =
+        `insert into Cart set ?;`;
+        DB.query(sqlQry, [req.body],
+            (err)=> {
+                if (err) {
+                    res.status(400).json({err: "Unable to add"})
+                }else{
+                    res.status(200).json({msg: "Successfully added to cart."});
+                }
+            })
+    };
+    
+    deleteCart(req, res) {
+        const sqlQry = 
+        `delete from Cart where CartId = ?;`;
+        DB.query(sqlQry,[req.params.id], (err)=>{
+            if(err)res.status(400).json({err: "Product not found."});
+            res.status(200).json({msg: "Product deleted successfully."});
+        })
     }
 }
 

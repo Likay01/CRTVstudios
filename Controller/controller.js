@@ -77,4 +77,8 @@ route.get('/Cart/:id', (req, res)=> {
     myCart.getCart(req, res)
 });
 
+route.delete('/Cart/:id',(req, res)=>{
+    myCart.deleteCart(req, res);
+});
+
 module.exports = route;
